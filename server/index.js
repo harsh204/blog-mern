@@ -143,18 +143,18 @@ app.get('/post/:id', async (req, res) => {
     res.json(postDoc);
 })
 
-// app.delete('/post/:id', async (req, res) => {
-//     const { id } = req.params;
+app.delete('/post/:id', async (req, res) => {
+    const { id } = req.params;
   
-//     try {
-//       const deletedPost = await Post.findByIdAndDelete(id);
-//       if (!deletedPost) {
-//         return res.status(404).json({ message: 'Post not found' });
-//       }
-//       } catch (error) {
-//     res.json({ message: 'Post deleted successfully' });
-//       res.status(500).json({ message: 'Server error' });
-//     }
-//   });
+    try {
+      const deletedPost = await Post.findByIdAndDelete(id);
+      if (!deletedPost) {
+        return res.status(404).json({ message: 'Post not found' });
+      }
+      } catch (error) {
+    res.json({ message: 'Post deleted successfully' });
+      res.status(500).json({ message: 'Server error' });
+    }
+  });
   
-app.listen(4000);
+app.listen(4000,console.log("Server is running"));

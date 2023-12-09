@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { UserContext } from "./UserContext";
 
 export default function Header() {
-  const {setUserInfo,userInfo}=useContext(UserContext)
+  const { setUserInfo, userInfo } = useContext(UserContext)
   useEffect(() => {
     fetch('http://localhost:4000/profile', {
       credentials: 'include'
@@ -12,17 +12,17 @@ export default function Header() {
         setUserInfo(userInfo);
       })
     })
-  },[])
+  }, [])
 
-  function logout(){
-    fetch('http://localhost:4000/logout',{
-      credentials:'include',
-      method:'POST'
+  function logout() {
+    fetch('http://localhost:4000/logout', {
+      credentials: 'include',
+      method: 'POST'
     })
     setUserInfo(null);
   }
 
-  const username=userInfo?.username
+  const username = userInfo?.username
   return (
     <header>
       <Link to="/" className="logo">MyBlog</Link>
@@ -40,7 +40,6 @@ export default function Header() {
             <Link to="/register">Register</Link>
           </>
         )}
-
       </nav>
     </header>
   )
